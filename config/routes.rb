@@ -2,12 +2,20 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :admin_backoffice, only: [:index] do
-    collection do
-      resources :posts, only: [:new, :edit, :create, :update, :destroy]
-      resources :users, only: [:new, :edit, :create, :update, :destroy]
-    end
+  resources :admin_backoffice, only: [:index]
+
+  namespace :admin_backoffice do
+    resources :posts
+    resources :users, only: [:index, :edit, :update, :destroy]
+    resources :comments, only: [:new, :edit, :create, :update, :destroy]
   end
 
   resources :posts, only: [:index, :show]
+  resources :comments, only: [:new, :edit, :create, :update, :destroy]
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  root to: "welcome#index"
 end

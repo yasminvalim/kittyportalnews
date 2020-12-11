@@ -1,5 +1,5 @@
-class PostsController < ActionController::Base
-  before_action :set_post
+class PostsController < ApplicationController 
+  before_action :set_post, only: [:show]
  
   def index
     @posts = Post.all

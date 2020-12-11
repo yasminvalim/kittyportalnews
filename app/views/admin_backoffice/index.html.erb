@@ -1,0 +1,61 @@
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-10 col-lg-8 offset-md-1 offset-lg-2'>
+          <div class='card mt-5'>
+            <h2 class="card-title text-center text-info"> ADMINISTRATOR BACKOFFICE</h2>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">MANAGE POSTS</h5>
+                     <p class="card-text"> Delete and edit your posts or create a new one.</p>
+                    <%= link_to 'POSTS', admin_backoffice_posts_path, class:'btn btn-outline-info btn-block' %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">MANAGE USERS</h5>
+                    <p class="card-text">Delete an inconvenient user or promove a nice one to be administrator like you!</p>
+                     <%= link_to 'USERS', admin_backoffice_users_path, class:'btn btn-outline-info btn-block' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class='container'>
+      <div class='row'>
+        <div class='col-md-10 col-lg-8 offset-md-1 offset-lg-2'>
+          <div class='card mt-5'>
+            <h2 class="card-title text-center text-info"> MY PROFILE </h2>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">EDIT MY PROFILE</h5>
+                     <p class="card-text">Change your password.</p>
+                    <%= link_to 'EDIT', admin_backoffice_posts_path, class:'btn btn-outline-info btn-block' %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">MY COMMENTS</h5>
+                    <p class="card-text"> Edit or delete your comments</p>
+                     <%= link_to 'COMMENTS', admin_backoffice_users_path, class:'btn btn-outline-info btn-block' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

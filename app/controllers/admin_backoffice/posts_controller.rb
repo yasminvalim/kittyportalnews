@@ -1,5 +1,5 @@
-class AdminBackoffice::PostsController < AdminbackOfficeController
-  before_action :set_post
+class AdminBackoffice::PostsController < AdminBackofficeController
+  before_action :set_post, only: [:edit, :update, :destroy]
  
   def index
     @posts = Post.all
@@ -26,10 +26,8 @@ class AdminBackoffice::PostsController < AdminbackOfficeController
     respond_to do |format|
       if @news.save
         format.html { redirect_to @post, notice: 'News was successfully created.' }
-        format.json { render :show, status: :created, location: @post}
       else
         format.html { render :post }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +37,8 @@ class AdminBackoffice::PostsController < AdminbackOfficeController
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @news, notice: 'News was successfully updated.' }
-        format.json { render :show, status: :ok, location: @news }
       else
         format.html { render :edit }
-        format.json { render json: @news.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,7 +48,6 @@ class AdminBackoffice::PostsController < AdminbackOfficeController
     @post.destroy
     respond_to do |format|
       format.html { redirect_to post_index_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -63,7 +58,7 @@ class AdminBackoffice::PostsController < AdminbackOfficeController
     end
 
     def post_params
-      params.require(:post).permit(:title, :description, :references)
+      params.require(:post).permit(:title, :content, :references)
     end
 
 end

@@ -1,4 +1,4 @@
-<% post.each do |post| %>
+<% @posts.each do |post| %>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="well well-lg">
@@ -6,7 +6,7 @@
           <%= link_to post.title, post_path(post) %>
         </div>
         <div class="post-body">
-          <%= truncate(post.description, length: 100) %>
+          <%= truncate(post.content, length: 100) %>
           <div class="post-meta-details">
             <small>Created by: <%= post.user.email if post.user %>,
               <%= time_ago_in_words(post.created_at) %> ago,

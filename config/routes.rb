@@ -1,4 +1,13 @@
+
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :admin_backoffice, only: [:index] do
+    collection do
+      resources :posts, only: [:new, :edit, :create, :update, :destroy]
+      resources :users, only: [:new, :edit, :create, :update, :destroy]
+    end
+  end
+
+  resources :posts, only: [:index, :show]
 end

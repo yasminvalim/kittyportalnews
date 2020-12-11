@@ -1,0 +1,2 @@
+class AdminBackoffice::PostsController < AdminbackOfficeController
+end

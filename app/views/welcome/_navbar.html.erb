@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="nav navbar-nav ml-auto">
     <% if !user_signed_in? %>
         <li class="nav-item">
           <%= link_to 'SIGN IN', user_session_path, class:"nav-link" %>
@@ -13,9 +13,14 @@
           <%= link_to 'SIGN UP', new_user_registration_path, class:"nav-link"%>
         </li>
       <% else %>
-        <li class="nav-item">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.email %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class:"nav-link" %>
-        </li>
+        </div>
+      </li>
       <% end %>
     </ul>
   </div>

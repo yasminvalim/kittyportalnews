@@ -1,7 +1,7 @@
-CommentsController < ApplicationController 
-before_action :authenticate_user!, except [:show, :index]
-before_action :set_comment
- 
+class CommentsController < ApplicationController 
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_comment , except: [:index]
+  
   def index
     @comments = comment.all
   end
@@ -26,11 +26,10 @@ before_action :set_comment
 
     respond_to do |format|
       if @news.save
-        format.html { redirect_to @comment, notice: 'News was successfully created.' }
-        format.json { render :show, status: :created, location: @comment}
+        format.html { redirect_to @post_path(post), notice: 'News was successfully created.' }
+       
       else
-        format.html { render :comment }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
@@ -39,7 +38,7 @@ before_action :set_comment
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @news, notice: 'News was successfully updated.' }
+        format.html { redirect_to @posts_path, notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -50,7 +49,7 @@ before_action :set_comment
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to post_index_url, notice: 'comment was successfully destroyed.' }
+      format.html { redirect_to @post_path, notice: 'Comment was successfully destroyed.' }
     end
   end
 

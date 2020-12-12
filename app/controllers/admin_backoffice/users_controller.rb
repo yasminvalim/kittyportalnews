@@ -1,5 +1,5 @@
-class AdminBackoffice::UsersController < AdminbackOfficeController
-  before_action :set_user
+class AdminBackoffice::UsersController < AdminBackofficeController
+  before_action :set_user, except: [:index]
   
   def index
     @users = User.all
@@ -13,21 +13,18 @@ class AdminBackoffice::UsersController < AdminbackOfficeController
 
   def update
     respond_to do |format|
-      if @coment.update(coment_params)
-        format.html { redirect_to @coment, notice: 'Coment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @coment }
+      if @user.update(user_params)
+        format.html { redirect_to admin_backoffice_users_path, notice: 'user was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @coment.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @coment.destroy
+    @user.destroy
     respond_to do |format|
-      format.html { redirect_to coments_url, notice: 'Coment was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to admin_backoffice_users_path, notice: 'user was successfully destroyed.' }
     end
   end
 
@@ -36,7 +33,7 @@ class AdminBackoffice::UsersController < AdminbackOfficeController
       @user = User.find(params[:id])
     end
 
-    def coment_params
-      params.fetch(:coment, {})
+    def user_params
+      params.require(:user).permit(:email, :is_admin)
     end
 end

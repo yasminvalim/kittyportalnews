@@ -1,4 +1,4 @@
-AdminBackoffice::CommentsController < AdminbackOfficeController
+AdminBackoffice::CommentsController < AdminBackofficeController
 before_action :set_comment
  
   def index

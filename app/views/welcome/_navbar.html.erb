@@ -19,6 +19,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class:"nav-link" %>
+          <% if current_user.is_admin %>
+            <%= link_to "ADM AREA", admin_backoffice_index_path, class:"nav-link" %>
+          <% end %>
         </div>
       </li>
       <% end %>

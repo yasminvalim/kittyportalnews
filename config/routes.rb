@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  get 'admins_backoffice', to: 'admin_backoffice#index'
+
   root to: "welcome#index"
 end

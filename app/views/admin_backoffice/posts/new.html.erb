@@ -1,16 +1,10 @@
-<div class="card-header bg-white">
-<h1>NEW</h1>
-</div>
+ <br>
+ <div class='container'>
 
-<%= render 'form' %>
+   <h1 class="text-info text-center">NEW</h1>
 
-<div class="card-header bg-white">
-  <div class="row">
-    <div class="col-2">
-    <%=link_to admin_backoffice_index_path, class:"btn btn-secondary" do %>
-      <small> BACK </small>
-     <% end %>
-    </div> 
-  </div>
-</div>
-
+   <%= render 'form' %>
+   <div class='container'>
+     <%=link_to "BACK", admin_backoffice_index_path, class:"btn btn-outline-secondary btn-sm"%>
+   </div>
+ </div>

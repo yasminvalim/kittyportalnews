@@ -3,7 +3,7 @@ class UserController < ApplicationController
   before_action :set_user, except: [:index]
 
   def index
-    @users = User.all
+    @users = User.all.order(:email).page params[:page]
   end
 
   def show; end

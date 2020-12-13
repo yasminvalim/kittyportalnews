@@ -5,6 +5,8 @@ ruby '2.6.6'
 
 gem 'devise'
 gem 'kaminari'
+gem 'ransack'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

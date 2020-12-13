@@ -1,5 +1,5 @@
 <div class='container'>
-  <% @post.comments.each do |comment| %>
+  <% @comments.each do |comment| %>
     <div class="card w-100">
       <div class="card-body bg-light">
         <h5 class="card-title text-info"><%= comment.user.email %> commented</h5>
@@ -11,4 +11,8 @@
       </div>
     </div>
   <% end %>
+</div>
+<div class="card mt-5 border-white align-items-center">
+<%= paginate @comments %>
+<br>
 </div>

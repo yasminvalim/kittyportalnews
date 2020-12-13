@@ -10,10 +10,10 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.post, notice: 'News was successfully created.' }
+        format.html { redirect_to @comment.post, notice: 'Comment was successfully created.' }
 
       else
-        format.html { render :new }
+        format.html { redirect_to @comment.post, alert: 'Your comment cant be created.' }
       end
     end
   end

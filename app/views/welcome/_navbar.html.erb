@@ -5,14 +5,20 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="nav navbar-nav ml-auto">
+      <li>
+        <%= search_form_for @q, url: root_path, html: {class: "form-inline my-2 my-lg-0"} do |f| %>
+        <%= f.search_field :content_or_title_cont, class:"form-control mr-sm-2", placeholder:"Search"%>
+        <%= f.submit class:"btn btn-outline-info my-2 my-sm-0" %>
+      <% end  %>
+    </li>
     <% if !user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'SIGN IN', user_session_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'SIGN UP', new_user_registration_path, class:"nav-link"%>
-        </li>
-      <% else %>
+      <li class="nav-item">
+        <%= link_to 'SIGN IN', user_session_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'SIGN UP', new_user_registration_path, class:"nav-link"%>
+      </li>
+    <% else %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= current_user.email %>
@@ -24,7 +30,7 @@
           <% end %>
         </div>
       </li>
-      <% end %>
-    </ul>
-  </div>
+    <% end %>
+  </ul>
+</div>
 </nav>

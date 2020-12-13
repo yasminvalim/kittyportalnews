@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   namespace :admin_backoffice do
     resources :posts
     resources :users, only: [:index, :edit, :update, :destroy, :show]
-    resources :comments, only: [:new, :edit, :create, :update, :destroy]
   end
 
   resources :posts, only: [:index, :show]

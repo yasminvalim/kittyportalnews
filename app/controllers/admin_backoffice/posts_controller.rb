@@ -5,7 +5,8 @@ class AdminBackoffice::PostsController < AdminBackofficeController
     @posts = Post.where(user: current_user)
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @post = Post.new

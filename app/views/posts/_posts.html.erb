@@ -1,0 +1,22 @@
+<% @posts.each do |post| %>
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= link_to post.title, post_path(post), class:"text-info h3" %></h5>
+    <p class="card-text text-muted text-justify">
+      <%= (post.content) %></p>
+    <div class="card-body">
+      <small class="card-text text-muted">
+        Created by:
+        <%= post.user.email if post.user %>,
+        <%= time_ago_in_words(post.created_at) %>
+        ago, last updated:
+        <%= time_ago_in_words(post.updated_at) %>
+        ago
+        <%= link_to 'Comments', post_path(post) %>
+      </small>
+    </div>
+    <div class="card-body">
+      <br>
+    </div>
+  </div>
+<% end %>

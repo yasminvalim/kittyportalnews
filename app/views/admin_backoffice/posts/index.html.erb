@@ -22,7 +22,11 @@
     </div>
     <br>
   <% end %>
+  <div class="card mt-5 border-white align-items-center">
+  <%= paginate @posts %>
+  <br>
+  </div>
   <div>
-    <%= link_to "BACK", admin_backoffice_index_path, class: "btn btn-block btn-info" %>
+    <%= link_to "BACK", admin_backoffice_index_path, class: "btn btn-sm btn-outline-secondary" %>
   </div>
 </div>

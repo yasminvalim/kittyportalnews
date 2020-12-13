@@ -2,7 +2,7 @@ class AdminBackoffice::PostsController < AdminBackofficeController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.where(user: current_user)
+    @posts = Post.where(user: current_user).order(created_at: :desc).page params[:page]
   end
 
   def new

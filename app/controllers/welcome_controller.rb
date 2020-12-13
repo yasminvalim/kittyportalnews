@@ -1,8 +1,8 @@
 
-class WelcomeController < ApplicationController 
-  
+class WelcomeController < ApplicationController
+
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc).page params[:page]
   end
 
 

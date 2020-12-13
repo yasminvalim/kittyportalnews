@@ -1,13 +1,13 @@
 class AdminBackoffice::UsersController < AdminBackofficeController
   before_action :set_user, except: [:index]
-  
+
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def show
   end
-  
+
   def edit
   end
 
@@ -30,7 +30,7 @@ class AdminBackoffice::UsersController < AdminBackofficeController
 
   private
     def set_user
-      @user = User.find(params[:id])
+      @user = User.where.not(id: current_user.id).find(params[:id])
     end
 
     def user_params

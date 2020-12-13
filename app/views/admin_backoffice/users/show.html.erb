@@ -1,0 +1,32 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-10 col-lg-8 offset-md-1 offset-lg-2'>
+      <div class='card mt-5'>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="text-info text-center"><%= @user.email %>
+              <% if @user.is_admin? %>
+                <small class="badge badge-info badge-pill">ADMINISTRATOR
+                </small>
+              <% else %>
+                <span class="badge badge-secondary badge-pill">REGULAR USER
+                </span>
+              <% end %>
+            </h3>
+          </div>
+          <div class="card-body">
+            <p class="h4 text-center">User created
+              <%= time_ago_in_words(@user.created_at) %></p>
+            <p class="card-text text-muted text-center">
+              <%= @user.comments.count if @user.comments%>
+              comments
+              <%= @user.posts.count if @user.posts%>
+              posts
+            </p>
+            <%= link_to 'EDIT', edit_admin_backoffice_user_path(@user), class:'btn btn-info btn-block'%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

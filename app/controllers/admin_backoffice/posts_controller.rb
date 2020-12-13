@@ -1,11 +1,8 @@
 class AdminBackoffice::PostsController < AdminBackofficeController
-  before_action :set_post, only: %i[edit update destroy show]
+  before_action :set_post, only: %i[edit update destroy]
 
   def index
     @posts = Post.where(user: current_user)
-  end
-
-  def show
   end
 
   def new

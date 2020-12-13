@@ -1,16 +1,12 @@
 <div class='container'>
-  <% @comments.each do |comment| %>
+  <% @post.comments.each do |comment| %>
     <div class="card w-50">
       <div class="card-body">
-        <h5 class="card-title"><%= @comment.user.email %></h5>
-        <p class="card-text"><%= simple_format(@comment.content) %></p>
-        <% if logged_in? %>
-          <% if current_user.is_admin? %>
-            <%= link_to "DELETE", comment_path(@comment), method: :delete, data: { confirm: "Are you sure you want to delete this post?"}, class: "btn btn-sm btn-outline-danger" %>
-          <% else %>
-            <%= link_to "EDIT", edit_comment_path(@comment), class: "btn btn-sm btn-outline-primary" %>
-            <%= link_to "DELETE", comment_path(@comment), method: :delete, data: { confirm: "Are you sure you want to delete this post?"}, class: "btn btn-sm btn-outline-danger" %>
-          <% end %>
+        <h5 class="card-title"><%= comment.user.email %> commented</h5>
+        <small><%= time_ago_in_words(comment.created_at) %><small>
+        <p class="card-text"><%= simple_format(comment.content) %></p>
+          <% if current_user.is_admin? || current_user == comment.user %>
+            <%= link_to "DELETE", comment_path(comment), method: :delete, data: { confirm: "Are you sure you want to delete this post?"}, class: "btn btn-sm btn-outline-danger" %>
         <% end %>
       </div>
     </div>

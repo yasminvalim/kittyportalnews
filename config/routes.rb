@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :admin_backoffice, only: [:index]
 
   namespace :admin_backoffice do
-    resources :posts
+    resources :posts, except: [:show]
     resources :users, only: [:index, :edit, :update, :destroy, :show]
   end
 

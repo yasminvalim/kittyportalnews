@@ -1,19 +1,9 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_comment , except: [:index, :new, :create]
+  before_action :authenticate_user!, except: %i[show index]
 
   def index
     @comments = @post.comment.all
   end
-
-  def new
-    @comment = Comment.new
-  end
-
-
-  def edit
-  end
-
 
   def create
     @comment = Comment.new(comment_params)
@@ -28,19 +18,12 @@ class CommentsController < ApplicationController
     end
   end
 
-
-  def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment.post, notice: 'Comment was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
-    end
-  end
-
-
   def destroy
+    @comment = if current_user.is_admin
+                 Comment.find(params[:id])
+               else
+                 current_user.comments.find(params[:id])
+               end
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to @comment.post, notice: 'Comment was successfully destroyed.' }
@@ -49,12 +32,7 @@ class CommentsController < ApplicationController
 
   private
 
-    def set_comment
-      @comment = comment.find(params[:id])
-    end
-
-    def comment_params
-      params.require(:comment).permit(:content, :post_id)
-    end
-
+  def comment_params
+    params.require(:comment).permit(:content, :post_id)
+  end
 end

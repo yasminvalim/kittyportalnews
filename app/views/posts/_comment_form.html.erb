@@ -1,8 +1,10 @@
-<div class='container'>
-  <%= form_for(@comment, :html => {class: 'form-horizontal'}) do |f| %>
-  <%= f.label "Comment", class: "text-info text-uppercase" %>
+
+<div class="card-body">
+  <%= form_for(@comment) do |f| %>
+  <div class="input-group mb-1">
   <%= f.hidden_field :post_id %>
-  <%= f.text_field :content, class: "form-control z-depth-1", placeholder: "Write something here...", autofocus: true %>
-  <%= f.submit class: 'btn btn-outline-info btn-block text-uppercase' %>
+  <%= f.text_field :content, class: "form-control", placeholder: "Comment about this!", autofocus: true %>
+    <div class="input-group-append">
+  <%= f.submit "Comment", class: 'btn btn-info input-group-btn' %>
   <% end %>
 </div>

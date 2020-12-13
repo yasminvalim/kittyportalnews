@@ -6,7 +6,7 @@ ruby '2.6.6'
 gem 'devise'
 gem 'kaminari'
 gem 'ransack'
-
+gem 'friendly_id'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

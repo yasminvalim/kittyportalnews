@@ -17,7 +17,7 @@ class AdminBackoffice::PostsController < AdminBackofficeController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to admin_backoffice_post_path(@post), notice: 'News was successfully created.' }
+        format.html { redirect_to post_path(@post), notice: 'News was successfully created.' }
       else
         format.html { render :new }
       end

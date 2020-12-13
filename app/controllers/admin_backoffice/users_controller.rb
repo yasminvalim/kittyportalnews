@@ -2,7 +2,7 @@ class AdminBackoffice::UsersController < AdminBackofficeController
   before_action :set_user, except: [:index]
 
   def index
-    @users = User.where.not(id: current_user.id)
+    @users = User.all.where.not(id: current_user.id)
   end
 
   def show

@@ -1,15 +1,15 @@
- <div class='container'>
-   <%= form_for([:admin_backoffice, @post], :html => {class: "form-horizontal", role: "form"}) do |f| %>
-   <div class="form-group">
-     <%= f.label :title, class: "text-info text-uppercase" %>
-     <%= f.text_field :title, class: "form-control", placeholder: "Title of post", autofocus: true %>
-   </div>
-   <div class="form-group">
-     <%= f.label :content, class: "text-info text-uppercase" %>
-     <%= f.text_area :content, class: "form-control", placeholder: "Write your content here", autofocus: true %>
-   </div>
-   <div class="form-group">
-     <%= f.submit class: 'btn btn-outline-info btn-block text-uppercase' %>
-   </div>
-   <% end %>
- </div>
+<div class='container'>
+  <%= form_for([:admin_backoffice, @post], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :title, class: "text-info text-uppercase" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Title of post", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, class: "text-info text-uppercase" %>
+    <%= f.text_area :content, class: "form-control", placeholder: "Write your content here", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-outline-info btn-block text-uppercase' %>
+  </div>
+<% end %>
+</div>

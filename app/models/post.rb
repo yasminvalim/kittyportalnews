@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
@@ -7,5 +9,4 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   paginates_per 5
-
 end

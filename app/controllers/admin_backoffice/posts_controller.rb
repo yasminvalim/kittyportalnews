@@ -1,53 +1,57 @@
-class AdminBackoffice::PostsController < AdminBackofficeController
-  before_action :set_post, only: %i[edit update destroy]
+# frozen_string_literal: true
 
-  def index
-    @posts = Post.where(user: current_user).order(created_at: :desc).page params[:page]
-  end
+module AdminBackoffice
+  class PostsController < AdminBackofficeController
+    before_action :set_post, only: %i[edit update destroy]
 
-  def new
-    @post = Post.new
-  end
+    def index
+      @posts = Post.where(user: current_user).order(created_at: :desc).page params[:page]
+    end
 
-  def edit; end
+    def new
+      @post = Post.new
+    end
 
-  def create
-    @post = Post.new(post_params)
-    @post.user = current_user
+    def edit; end
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to post_path(@post), notice: 'News was successfully created.' }
-      else
-        format.html { render :new }
+    def create
+      @post = Post.new(post_params)
+      @post.user = current_user
+
+      respond_to do |format|
+        if @post.save
+          format.html { redirect_to post_path(@post), notice: 'News was successfully created.' }
+        else
+          format.html { render :new }
+        end
       end
     end
-  end
 
-  def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to admin_backoffice_post_path, notice: 'News was successfully updated.' }
-      else
-        format.html { render :edit }
+    def update
+      respond_to do |format|
+        if @post.update(post_params)
+          format.html { redirect_to admin_backoffice_post_path, notice: 'News was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
       end
     end
-  end
 
-  def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_backoffice_posts_path, notice: 'Post was successfully destroyed.' }
+    def destroy
+      @post.destroy
+      respond_to do |format|
+        format.html { redirect_to admin_backoffice_posts_path, notice: 'Post was successfully destroyed.' }
+      end
     end
-  end
 
-  private
+    private
 
-  def set_post
-    @post = Post.friendly.find(params[:id])
-  end
+    def set_post
+      @post = Post.friendly.find(params[:id])
+    end
 
-  def post_params
-    params.require(:post).permit(:title, :content, :references)
+    def post_params
+      params.require(:post).permit(:title, :content, :references)
+    end
   end
 end

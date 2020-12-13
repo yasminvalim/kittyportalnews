@@ -1,15 +1,16 @@
-  <br>
-  <div class='container'>
-    <h1 class="text-info text-center">ALL MY POSTS</h1>
-    <div class='card mt-5 border border-white align-items-center'>
+<br>
+<div class='container'>
+  <h1 class="text-info text-center">ALL MY POSTS</h1>
+  <div class='card mt-5 border border-white align-items-center'>
     <img src="https://www.flaticon.com/svg/static/icons/svg/763/763736.svg" alt="Cat idea" width="150" height="150">
     <br>
-    </div>
+  </div>
   <% @posts.each do |post| %>
     <div class="card text-center border border-white shadow p-3 mb-5 bg-white rounded">
       <div class="card-header border border-white bg-white">
-      <h2>  <%= link_to post.title, post_path(post), class:"text-info" %></h2>
-      <hr>
+        <h2>
+          <%= link_to post.title, post_path(post), class:"text-info" %></h2>
+        <hr>
       </div>
       <div class="card-body">
         <p class="card-text">
@@ -30,8 +31,8 @@
     <br>
   <% end %>
   <div class="card mt-5 border-white align-items-center">
-  <%= paginate @posts %>
-  <br>
+    <%= paginate @posts %>
+    <br>
   </div>
   <div>
     <%= link_to "BACK", admin_backoffice_index_path, class: "btn btn-sm btn-outline-secondary" %>

@@ -2,9 +2,10 @@
   <div class='row'>
     <div class='col-md-10 col-lg-8 offset-md-1 offset-lg-2'>
       <div class='card mt-5 border border-white align-items-center'>
-        <h2 class="card-title text-center text-info"> ADMINISTRATOR BACKOFFICE</h2>
+        <h2 class="card-title text-center text-info">
+          ADMINISTRATOR BACKOFFICE</h2>
         <div class='card mt-5 border border-white align-items-center'>
-        <img src="https://www.flaticon.com/svg/static/icons/svg/763/763724.svg" alt="Cat on computer" width="300" height="300">
+          <img src="https://www.flaticon.com/svg/static/icons/svg/763/763724.svg" alt="Cat on computer" width="300" height="300">
         </div>
         <br>
         <div class="row">
@@ -13,7 +14,8 @@
               <div class="card-body">
                 <br>
                 <h5 class="card-title text-info font-weight-bold">MANAGE POSTS</h5>
-                  <p class="card-text text-muted"> Delete and edit your posts or create a new one.</p>
+                <p class="card-text text-muted">
+                  Delete and edit your posts or create a new one.</p>
                 <%= link_to 'MY POSTS', admin_backoffice_posts_path, class:'btn btn-outline-info btn' %>
                 <%= link_to 'CREATE NEW POST', new_admin_backoffice_post_path, class:'btn btn-outline-info btn' %>
               </div>
@@ -25,7 +27,7 @@
                 <br>
                 <h5 class="card-title text-info font-weight-bold">MANAGE USERS</h5>
                 <p class="card-text text-muted">Promove a nice regular user to be administrator like you!</p>
-                  <%= link_to 'USERS', admin_backoffice_users_path, class:'btn btn-outline-info btn' %>
+                <%= link_to 'USERS', admin_backoffice_users_path, class:'btn btn-outline-info btn' %>
               </div>
             </div>
           </div>
